@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,16 +7,16 @@ public class Instrucoes : MonoBehaviour {
 	private int[] memoria;
 	public Instrucoes ()
 	{
-		memoria = new int[256]();
+		memoria = new string[256]();
 	}
 
 	// Funcao de para instrucao: ADD
-	public int ADD(int posMemoria, int acumulador) {
+	public int ADD(int end, int acumulador) {
 		int valorMemoria;
 
 		try {
 			// Pegando valor da memoria pos = posMemoria --- valor
-			valorMemoria = memoria[posMemoria];
+			valorMemoria = int.Parse(memoria[end]);
 		} catch(Exception error) {
 			throw new KeyNotFoundException();
 		}
@@ -27,19 +27,19 @@ public class Instrucoes : MonoBehaviour {
 		return resultado;
 	}
 
-	public void STORE(int posMemoria, int valor) {
+	public void STORE(int end, int valor) {
 		try {
-			memoria[posMemoria] = valor;
+			memoria[end] = valor.ToString();
 		} catch(Exception error) {
 			throw new Exception("Nao foi possivel inserir na posicao desejada. \n" + error);
 		}
 	}
 
-	public void LOAD(int posMemoria) {
+	public int LOAD(int end) {
 		int valor;
 
 		try {
-			valor = memoria[posMemoria];
+			valor = int.Parse(memoria[end]);
 		} catch(Exception error) {
 			throw new Exception("Nao foi possivel carregar da posicao desejada. \n" + error);
 		}
@@ -47,33 +47,24 @@ public class Instrucoes : MonoBehaviour {
 		return valor;
 	}
 
-	/*public void OR(int posMemoria, int acumulador) {
-		int valorMemoria;
+    public int NOT(int acumulador)
+    {
+        return ~acumulador;
+    }
 
-		try {
-			valorMemoria = memoria[posMemoria];
-		} catch(Exception error) {
-			throw new Exception("Nao foi possivel carregar da posicao desejada. \n" + error);
-		}
+    public string JUMP(int end)
+    {
+        return memoria[end];
+    }
 
-		if (valorMemoria == 1 || acumulador == 1) {
-			return 1;
-		} 
+    // OR e AND ainda nao estao 100% 
+    public void OR(int end, int acumulador)
+    {
+        return int.Parse(memoria[end]) | acumulador;
+    }
 
-		return 0;
-	}
-
-	public void AND(int posMemoria, int acumulador) {
-		int valorMemoria;
-
-		try {
-			valorMemoria = memoria[posMemoria];
-		} catch(Exception error) {
-			throw new Exception("Nao foi possivel carregar da posicao desejada. \n" + error);
-		}
-
-		int resultado = valorMemoria && acumulador;
-
-		return resultado;
-	}*/
+    public void AND(int end, int acumulador)
+    {
+        return int.Parse(memoria[end]) & acumulador;
+    }
 }
