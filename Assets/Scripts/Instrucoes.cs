@@ -3,8 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Instrucoes : MonoBehaviour {
+public class Instrucoes : MonoBehaviour
+{
 	private string[] memoria;
+
+
 	public Instrucoes ()
 	{
 		memoria = new string[256];
