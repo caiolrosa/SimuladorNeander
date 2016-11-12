@@ -19,10 +19,21 @@ public class NeanderEditor {
         for (int i = 0; i < lineSplitEnters.Length; i++)
         {
             string currentLine = lineSplitEnters[i];
-            string[] lineSplit = currentLine.Split(' ');
-            string command = lineSplit[0];
-            int parameter = int.Parse(lineSplit[1]);
-            Debug.Log("comando - " + command + " / parametro memoria " + parameter.ToString());
+            if (i < 127)
+            {
+                //string[] lineSplit = currentLine.Split(' ');
+                //string command = lineSplit[0];
+                //int parameter = int.Parse(lineSplit[1]);
+                //Debug.Log("comando - " + command + " / parametro memoria " + parameter.ToString());
+
+                //_comandos.Add(command);
+                //_parametros.Add(parameter);
+            }
+            else
+            {
+                Debug.Log(currentLine);
+                //memoria[i] = int.Parse(currentLine);
+            }
         }
     }
 }

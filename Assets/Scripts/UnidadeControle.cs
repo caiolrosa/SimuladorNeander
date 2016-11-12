@@ -5,66 +5,64 @@ using UnityEngine;
 
 public class UnidadeControle : MonoBehaviour {
 
-    public string stringAcumulador;
-    public void LerInstrucao(string instrucao)
+    public static void LerInstrucao(string comando, int posMemoria, int ValorAcumulador)
     {
-        int ValorAcumulador = int.Parse(stringAcumulador);
-
         string[] instrucaoLida;
         Instrucoes instrucoes = new Instrucoes();
 
-        try
-        {
-            instrucaoLida = instrucao.Split(' ');
-        } catch(Exception error)
-        {
-            throw new Exception("Não foi possível ler a instrução", error);
-        }
+        //try
+        //{
+        //    instrucaoLida = instrucao.Split(' ');
+        //} catch(Exception error)
+        //{
+        //    throw new Exception("Não foi possível ler a instrução", error);
+        //}
 
-        switch (instrucaoLida[0])
+        switch (comando)
         {
             case "ADD":
-                ValorAcumulador = instrucoes.ADD(int.Parse(instrucaoLida[1]), ValorAcumulador);
+                int tempValorAcumulador = instrucoes.ADD(posMemoria, ValorAcumulador);
+                NeanderController.INSTANCE.Acumulador.text = tempValorAcumulador.ToString();
                 break;
 
             case "STORE":
-                instrucoes.STORE(int.Parse(instrucaoLida[1]), ValorAcumulador);
+                instrucoes.STORE(posMemoria, ValorAcumulador);
                 break;
 
             case "LOAD":
-                instrucoes.LOAD(int.Parse(instrucaoLida[1]));
+                instrucoes.LOAD(posMemoria);
                 break;
 
-            case "JUMP":
-                string valorMemoria = instrucoes.JUMP(int.Parse(instrucaoLida[1]));
-                LerInstrucao(valorMemoria);
-                break;
+            //case "JUMP":
+            //    string valorMemoria = instrucoes.JUMP(posMemoria);
+            //    LerInstrucao(comando, int.Parse(valorMemoria));
+            //    break;
 
-            case "JUMPN":
-                string valorMemoriaN = instrucoes.JUMPN(int.Parse(instrucaoLida[1]), ValorAcumulador);
-                LerInstrucao(valorMemoriaN);
-                break;
+            //case "JUMPN":
+            //    string valorMemoriaN = instrucoes.JUMPN(posMemoria, ValorAcumulador);
+            //    LerInstrucao(comando, valorMemoriaN);
+            //    break;
 
-            case "JUMPZ":
-                string valorMemoriaZ = instrucoes.JUMPZ(int.Parse(instrucaoLida[1]), ValorAcumulador);
-                LerInstrucao(valorMemoriaZ);
-                break;
+            //case "JUMPZ":
+            //    string valorMemoriaZ = instrucoes.JUMPZ(posMemoria, ValorAcumulador);
+            //    LerInstrucao(comando, posMemoria);
+            //    break;
 
-            case "JUMPNZ":
-                string valorMemoriaNZ = instrucoes.JUMPNZ(int.Parse(instrucaoLida[1]), ValorAcumulador);
-                LerInstrucao(valorMemoriaNZ);
-                break;
+            //case "JUMPNZ":
+            //    string valorMemoriaNZ = instrucoes.JUMPNZ(int.Parse(instrucaoLida[1]), ValorAcumulador);
+            //    LerInstrucao(valorMemoriaNZ);
+            //    break;
 
             case "NOT":
                 instrucoes.NOT(ValorAcumulador);
                 break;
 
             case "OR":
-                instrucoes.OR(int.Parse(instrucaoLida[1]), ValorAcumulador);
+                instrucoes.OR(posMemoria, ValorAcumulador);
                 break;
 
             case "AND":
-                instrucoes.AND(int.Parse(instrucaoLida[1]), ValorAcumulador);
+                instrucoes.AND(posMemoria, ValorAcumulador);
                 break;
 
             case "HALT":

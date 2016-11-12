@@ -7,7 +7,6 @@ public class Instrucoes : MonoBehaviour
 {
 	private string[] memoria;
 
-
 	public Instrucoes ()
 	{
 		memoria = new string[256];
@@ -18,7 +17,7 @@ public class Instrucoes : MonoBehaviour
         int valorMemoria;
 		try {
 			// Pegando valor da memoria pos = posMemoria --- valor
-			valorMemoria = int.Parse(memoria[end]);
+			valorMemoria = NeanderController.INSTANCE.memoria[end];
 		} catch(Exception error) {
             throw new Exception("Não foi possível pegar o conteudo do endereço de memória", error);
         }

@@ -2,19 +2,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine.UI;
 
 public class NeanderController : MonoBehaviour
 {
     public static NeanderController INSTANCE;
+    public Text PcText, Acumulador;
 
     public List<string> _comandos = new List<string>();
     public List<int> _parametros = new List<int>();
+    public int[] memoria = new int[256];
 
     // Use this for initialization
     void Awake ()
     {
         INSTANCE = this;
 	}
+
+    void Start()
+    {
+        ReadTxtFile();
+        UnidadeControle.LerInstrucao(_comandos[0], _parametros[0], 0);
+    }
 	
 	void ReadTxtFile()
     {
@@ -29,13 +38,26 @@ public class NeanderController : MonoBehaviour
         for(int i = 0; i < lineSplitEnters.Length; i++)
         {
             string currentLine = lineSplitEnters[i];
-            string[] lineSplit = currentLine.Split(' ');
-            string command = lineSplit[0];
-            int parameter = int.Parse(lineSplit[1]);
-            Debug.Log("comando - " + command + " / parametro memoria " + parameter.ToString());
+            if (i < 127)
+            {
+                if (string.IsNullOrEmpty(currentLine))
+                {
+                    _comandos.Add("NOP");
+                    _parametros.Add(0);
+                    continue;
+                }
+                string[] lineSplit = currentLine.Split(' ');
+                string command = lineSplit[0];
+                int parameter = int.Parse(lineSplit[1]);
+                Debug.Log("comando - " + command + " / parametro memoria " + parameter.ToString());
 
-            _comandos.Add(command);
-            _parametros.Add(parameter);
+                _comandos.Add(command);
+                _parametros.Add(parameter);
+            }
+            else
+            {
+                memoria[i] = int.Parse(currentLine);
+            }
         }
     }
 }
