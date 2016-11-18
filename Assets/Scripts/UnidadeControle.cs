@@ -21,16 +21,15 @@ public class UnidadeControle : MonoBehaviour {
         switch (comando)
         {
             case "ADD":
-                int tempValorAcumulador = instrucoes.ADD(posMemoria, ValorAcumulador);
-                NeanderController.INSTANCE.Acumulador.text = tempValorAcumulador.ToString();
+                NeanderController.INSTANCE._Acumulador = instrucoes.ADD(posMemoria, ValorAcumulador);
                 break;
 
             case "STORE":
-                instrucoes.STORE(posMemoria, ValorAcumulador);
+                instrucoes.STA(posMemoria, ValorAcumulador);
                 break;
 
             case "LOAD":
-                instrucoes.LOAD(posMemoria);
+                NeanderController.INSTANCE._Acumulador = instrucoes.LDA(posMemoria);
                 break;
 
             //case "JUMP":
@@ -65,15 +64,23 @@ public class UnidadeControle : MonoBehaviour {
                 instrucoes.AND(posMemoria, ValorAcumulador);
                 break;
 
-            case "HALT":
+            case "HLT":
+                Debug.Log("RI recebe valor do PC");
+                Debug.Log("Pc incrementa");
+
+                Debug.Log("Para a execução");
                 string halt = "Programa finalizado";
                 break;
 
             case "NOP":
+                Debug.Log("RI recebe valor do PC");
+                Debug.Log("Pc incrementa");
                 break;
 
             default:
                 break;
         }
+
+        NeanderController.INSTANCE.Acumulador.text = NeanderController.INSTANCE._Acumulador.ToString();
     }
 }

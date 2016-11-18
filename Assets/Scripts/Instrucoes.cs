@@ -15,35 +15,42 @@ public class Instrucoes : MonoBehaviour
 	// Funcao de para instrucao: ADD
 	public int ADD(int end, int valorAcumulador) {
         int valorMemoria;
-		try {
-			// Pegando valor da memoria pos = posMemoria --- valor
-			valorMemoria = NeanderController.INSTANCE.memoria[end];
-		} catch(Exception error) {
-            throw new Exception("Não foi possível pegar o conteudo do endereço de memória", error);
-        }
-
+        //BUSCA
+        Debug.Log("RI pega o valor do PC da memoria");
+        Debug.Log("end pega a posicao da memoria");
+        //EXECUTA
+        valorMemoria = NeanderController.INSTANCE.memoria[end];
+        
+        Debug.Log("incrementa PC");
+        
 		// Somando valor da memoria com o valor do acumulador
 		int resultado = valorMemoria + valorAcumulador;
 
-		return resultado;
+        Debug.Log("Acumulador = Acumulador + MEM(end)");
+
+        return resultado;
 	}
 
-	public void STORE(int end, int valorAcumulador) {
-		try {
-			memoria[end] = valorAcumulador.ToString();
-		} catch(Exception error) {
-            throw new Exception("Não foi possível pegar o conteudo do endereço de memória", error);
-        }
+	public void STA(int end, int valorAcumulador) {
+        //Busca
+        Debug.Log("RI = valor do PC na memoria");
+
+        //Executa
+        Debug.Log("end = " + memoria[end].ToString());
+        Debug.Log("incrementa PC");
+        memoria[end] = valorAcumulador.ToString();
+        Debug.Log("Armazena na memoria o valor do acumulador - MEM(end) = " + valorAcumulador);
 	}
 
-	public int LOAD(int end) {
+	public int LDA(int end) {
 		int valor;
 
-		try {
-			valor = int.Parse(memoria[end]);
-		} catch(Exception error) {
-            throw new Exception("Não foi possível pegar o conteudo do endereço de memória", error);
-        }
+        Debug.Log("RI pega o valor do PC da memoria");
+        Debug.Log("end pega a posicao da memoria");
+        Debug.Log("incrementa PC");
+
+        valor = int.Parse(memoria[end]);
+        Debug.Log("acumulador recebe o valor que estava na posicao da memoria " + end);
 
 		return valor;
 	}
@@ -51,6 +58,10 @@ public class Instrucoes : MonoBehaviour
     public string JUMP(int end)
     {
         string conteudoMemoria;
+
+        Debug.Log("RI pega o valor do PC da memoria");
+        Debug.Log("end pega a posicao da memoria");
+        Debug.Log("PC recebe valor " + end);
 
         try
         {
@@ -67,7 +78,7 @@ public class Instrucoes : MonoBehaviour
     public string JUMPN(int end, int valorAcumulador)
     {
         string conteudoMemoria;
-
+        
         if (valorAcumulador < 0)
         {
             try
@@ -133,8 +144,12 @@ public class Instrucoes : MonoBehaviour
 
     public void NOT(int valorAcumulador)
     {
+        Debug.Log("RI pega o valor do PC da memoria");
+        Debug.Log("incrementa PC");
+
         int notAcumulador = valorAcumulador;
         string binaryNot = Convert.ToString(notAcumulador, 2);
+        Debug.Log("Acumulador recebe valor NOT(AC)");
     }
 
     public void OR(int end, int valorAcumulador)

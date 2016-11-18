@@ -13,6 +13,8 @@ public class NeanderController : MonoBehaviour
     public List<int> _parametros = new List<int>();
     public int[] memoria = new int[256];
 
+    public int _Acumulador = 0;
+
     // Use this for initialization
     void Awake ()
     {
@@ -22,7 +24,7 @@ public class NeanderController : MonoBehaviour
     void Start()
     {
         ReadTxtFile();
-        UnidadeControle.LerInstrucao(_comandos[0], _parametros[0], 0);
+        UnidadeControle.LerInstrucao(_comandos[0], _parametros[0], _Acumulador);
     }
 	
 	void ReadTxtFile()
