@@ -3,84 +3,73 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnidadeControle : MonoBehaviour {
+public class UnidadeControle : MonoBehaviour
+{
 
-    public static void LerInstrucao(string comando, int posMemoria, int ValorAcumulador)
+    private static Instrucoes instrucoes = new Instrucoes();
+
+    public static void LerInstrucao(int instrucao, int posMemoria, int ValorAcumulador)
     {
-        string[] instrucaoLida;
-        Instrucoes instrucoes = new Instrucoes();
+        string comando = NeanderController.INSTANCE.decodificarInstrucao(instrucao);
 
-        //try
-        //{
-        //    instrucaoLida = instrucao.Split(' ');
-        //} catch(Exception error)
-        //{
-        //    throw new Exception("Não foi possível ler a instrução", error);
-        //}
-
+        NeanderController.INSTANCE.print("instrução = " + comando, true);
         switch (comando)
         {
-            case "ADD":
-                NeanderController.INSTANCE._Acumulador = instrucoes.ADD(posMemoria, ValorAcumulador);
+            case "ADD": // 1 OK
+                instrucoes.ADD(posMemoria, ValorAcumulador);
                 break;
 
-            case "STORE":
-                instrucoes.STA(posMemoria, ValorAcumulador);
+            case "STA": // 2 OK
+                instrucoes.STA(posMemoria);
                 break;
 
-            case "LOAD":
-                NeanderController.INSTANCE._Acumulador = instrucoes.LDA(posMemoria);
+            case "LDA": // 3 OK
+                (instrucoes.LDA(posMemoria);
                 break;
 
-            //case "JUMP":
-            //    string valorMemoria = instrucoes.JUMP(posMemoria);
-            //    LerInstrucao(comando, int.Parse(valorMemoria));
-            //    break;
+            case "JUMP": // 4 OK
+                instrucoes.JUMP(posMemoria);
+                break;
 
-            //case "JUMPN":
+            //case "JUMPN": // 5
             //    string valorMemoriaN = instrucoes.JUMPN(posMemoria, ValorAcumulador);
             //    LerInstrucao(comando, valorMemoriaN);
             //    break;
 
-            //case "JUMPZ":
+            //case "JUMPZ": // 6
             //    string valorMemoriaZ = instrucoes.JUMPZ(posMemoria, ValorAcumulador);
             //    LerInstrucao(comando, posMemoria);
             //    break;
 
-            //case "JUMPNZ":
+            //case "JUMPNZ": // 7
             //    string valorMemoriaNZ = instrucoes.JUMPNZ(int.Parse(instrucaoLida[1]), ValorAcumulador);
             //    LerInstrucao(valorMemoriaNZ);
             //    break;
 
-            case "NOT":
+            case "NOT": // 8 OK
                 instrucoes.NOT(ValorAcumulador);
                 break;
 
-            case "OR":
+            case "OR": // 9 OK
                 instrucoes.OR(posMemoria, ValorAcumulador);
                 break;
 
-            case "AND":
+            case "AND": // 10 OK
                 instrucoes.AND(posMemoria, ValorAcumulador);
                 break;
 
-            case "HLT":
-                Debug.Log("RI recebe valor do PC");
-                Debug.Log("Pc incrementa");
+            case "HLT": // 11
+                NeanderController.INSTANCE.IncrementaPC();
 
-                Debug.Log("Para a execução");
-                string halt = "Programa finalizado";
+                NeanderController.INSTANCE.print("Programa finalizado");
                 break;
 
-            case "NOP":
-                Debug.Log("RI recebe valor do PC");
-                Debug.Log("Pc incrementa");
+            case "NOP": // 0 OK
+                NeanderController.INSTANCE.IncrementaPC();
                 break;
 
             default:
                 break;
         }
-
-        NeanderController.INSTANCE.Acumulador.text = NeanderController.INSTANCE._Acumulador.ToString();
     }
 }

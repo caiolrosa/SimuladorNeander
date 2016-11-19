@@ -13,66 +13,66 @@ public class Instrucoes : MonoBehaviour
 	}
 
 	// Funcao de para instrucao: ADD
-	public int ADD(int end, int valorAcumulador) {
+	public IEnumerator ADD(int end, int valorAcumulador) {
         int valorMemoria;
-        //BUSCA
-        Debug.Log("RI pega o valor do PC da memoria");
-        Debug.Log("end pega a posicao da memoria");
+
+        NeanderController.INSTANCE.verificaEndereco(end);
+        NeanderController.INSTANCE.print("end pega a posicao da memoria");
+
+        yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
+
         //EXECUTA
         valorMemoria = NeanderController.INSTANCE.memoria[end];
-        
-        Debug.Log("incrementa PC");
-        
-		// Somando valor da memoria com o valor do acumulador
-		int resultado = valorMemoria + valorAcumulador;
 
-        Debug.Log("Acumulador = Acumulador + MEM(end)");
+        NeanderController.INSTANCE.IncrementaPC();
 
-        return resultado;
-	}
+        yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
 
-	public void STA(int end, int valorAcumulador) {
+        // Somando valor da memoria com o valor do acumulador
+        int resultado = valorMemoria + valorAcumulador;
+
+        NeanderController.INSTANCE.print("Acumulador = " + valorAcumulador.ToString() + " + " + valorMemoria.ToString());
+
+        yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
+        NeanderController.INSTANCE.atualizaAcc(resultado);
+
+    }
+
+	public IEnumerator STA(int end) {
         //Busca
-        Debug.Log("RI = valor do PC na memoria");
+        //NeanderController.INSTANCE.print("RI carrega a instruçai STA");
 
         //Executa
-        Debug.Log("end = " + memoria[end].ToString());
-        Debug.Log("incrementa PC");
-        memoria[end] = valorAcumulador.ToString();
-        Debug.Log("Armazena na memoria o valor do acumulador - MEM(end) = " + valorAcumulador);
-	}
+        NeanderController.INSTANCE.verificaEndereco(end);
 
-	public int LDA(int end) {
+        yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
+
+        NeanderController.INSTANCE.IncrementaPC();
+
+        yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
+
+        NeanderController.INSTANCE.armazenaValorNaMemoria(end);
+    }
+
+	public IEnumerator LDA(int end) {
 		int valor;
+        NeanderController.INSTANCE.print("end pega a posicao da memoria");
+        NeanderController.INSTANCE.verificaEndereco(end);
+        yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
 
-        Debug.Log("RI pega o valor do PC da memoria");
-        Debug.Log("end pega a posicao da memoria");
-        Debug.Log("incrementa PC");
+        NeanderController.INSTANCE.IncrementaPC();
+        yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
 
-        valor = int.Parse(memoria[end]);
-        Debug.Log("acumulador recebe o valor que estava na posicao da memoria " + end);
+        valor = NeanderController.INSTANCE.memoria[end];
+        NeanderController.INSTANCE.print("acumulador recebe o valor que estava na posicao da memoria " + end);
+        yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
 
-		return valor;
+        NeanderController.INSTANCE.atualizaAcc(valor);
 	}
 
-    public string JUMP(int end)
+    public void JUMP(int end)
     {
-        string conteudoMemoria;
-
-        Debug.Log("RI pega o valor do PC da memoria");
-        Debug.Log("end pega a posicao da memoria");
-        Debug.Log("PC recebe valor " + end);
-
-        try
-        {
-            conteudoMemoria = memoria[end];
-        }
-        catch (Exception error)
-        {
-            throw new Exception("Não foi possível pegar o conteudo do endereço de memória", error);
-        }
-
-        return memoria[end];
+        NeanderController.INSTANCE.IncrementaPC(end);
     }
 
     public string JUMPN(int end, int valorAcumulador)
@@ -142,25 +142,54 @@ public class Instrucoes : MonoBehaviour
         }
     }
 
-    public void NOT(int valorAcumulador)
+    public IEnumerator NOT(int valorAcumulador)
     {
-        Debug.Log("RI pega o valor do PC da memoria");
-        Debug.Log("incrementa PC");
+        NeanderController.INSTANCE.IncrementaPC();
+        yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
 
-        int notAcumulador = valorAcumulador;
-        string binaryNot = Convert.ToString(notAcumulador, 2);
-        Debug.Log("Acumulador recebe valor NOT(AC)");
+        int notAcumulador = ~valorAcumulador;
+
+        NeanderController.INSTANCE.print("Acumulador recebe valor NOT("+ valorAcumulador + ")");
+
+        yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
+        NeanderController.INSTANCE.atualizaAcc(notAcumulador);
     }
 
-    public void OR(int end, int valorAcumulador)
+    public IEnumerator OR(int end, int valorAcumulador)
     {
-        int orAcumulador = valorAcumulador | end;
-        string binaryNot = Convert.ToString(orAcumulador, 2);
+        NeanderController.INSTANCE.IncrementaPC();
+        yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
+
+        NeanderController.INSTANCE.verificaEndereco(end);
+
+        yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
+
+        int orAcumulador = valorAcumulador | NeanderController.INSTANCE.memoria[end];
+
+        NeanderController.INSTANCE.print("Bits do valor no acumulador = " + Convert.ToString(valorAcumulador, 2));
+        NeanderController.INSTANCE.print("Bits do valor na memoria = " + Convert.ToString(NeanderController.INSTANCE.memoria[end], 2));
+        yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
+        NeanderController.INSTANCE.print("resp do valor no acumulador = " + Convert.ToString(orAcumulador, 2));
+        yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
+
+        NeanderController.INSTANCE.atualizaAcc(orAcumulador);
     }
 
-    public void AND(int end, int valorAcumulador)
+    public IEnumerator AND(int end, int valorAcumulador)
     {
-        int andAcumulador = valorAcumulador & end;
-        string binaryNot = Convert.ToString(andAcumulador, 2);
+        NeanderController.INSTANCE.IncrementaPC();
+        yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
+
+        NeanderController.INSTANCE.verificaEndereco(end);
+        yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
+        int orAcumulador = valorAcumulador & NeanderController.INSTANCE.memoria[end];
+
+        NeanderController.INSTANCE.print("Bits do valor no acumulador = " + Convert.ToString(valorAcumulador, 2));
+        NeanderController.INSTANCE.print("Bits do valor na memoria = " + Convert.ToString(NeanderController.INSTANCE.memoria[end], 2));
+        yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
+        NeanderController.INSTANCE.print("resp do valor no acumulador = " + Convert.ToString(orAcumulador, 2));
+        yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
+
+        NeanderController.INSTANCE.atualizaAcc(orAcumulador);
     }
 }

@@ -21,10 +21,17 @@ public class NeanderEditor {
             string currentLine = lineSplitEnters[i];
             if (i < 127)
             {
-                //string[] lineSplit = currentLine.Split(' ');
-                //string command = lineSplit[0];
-                //int parameter = int.Parse(lineSplit[1]);
-                //Debug.Log("comando - " + command + " / parametro memoria " + parameter.ToString());
+                if (string.IsNullOrEmpty(currentLine))
+                {
+                    //_comandos.Add(0);
+                    //_parametros.Add(0);
+                    continue;
+                }
+
+                string[] lineSplit = currentLine.Split(' ');
+                int command = int.Parse(lineSplit[0]);
+                int parameter = int.Parse(lineSplit[1]);
+                Debug.Log("comando - " + command.ToString() + " / parametro memoria " + parameter.ToString());
 
                 //_comandos.Add(command);
                 //_parametros.Add(parameter);
