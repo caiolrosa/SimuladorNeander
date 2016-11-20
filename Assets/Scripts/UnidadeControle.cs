@@ -16,15 +16,15 @@ public class UnidadeControle : MonoBehaviour
         switch (comando)
         {
             case "ADD": // 1 OK
-                instrucoes.ADD(posMemoria, ValorAcumulador);
+                NeanderController.INSTANCE.StartCoroutine(instrucoes.ADD(posMemoria, ValorAcumulador));
                 break;
 
             case "STA": // 2 OK
-                instrucoes.STA(posMemoria);
+                NeanderController.INSTANCE.StartCoroutine(instrucoes.STA(posMemoria));
                 break;
 
             case "LDA": // 3 OK
-                (instrucoes.LDA(posMemoria);
+                NeanderController.INSTANCE.StartCoroutine(instrucoes.LDA(posMemoria));
                 break;
 
             case "JUMP": // 4 OK
@@ -47,15 +47,15 @@ public class UnidadeControle : MonoBehaviour
             //    break;
 
             case "NOT": // 8 OK
-                instrucoes.NOT(ValorAcumulador);
+                NeanderController.INSTANCE.StartCoroutine(instrucoes.NOT(ValorAcumulador));
                 break;
 
             case "OR": // 9 OK
-                instrucoes.OR(posMemoria, ValorAcumulador);
+                NeanderController.INSTANCE.StartCoroutine(instrucoes.OR(posMemoria, ValorAcumulador));
                 break;
 
             case "AND": // 10 OK
-                instrucoes.AND(posMemoria, ValorAcumulador);
+                NeanderController.INSTANCE.StartCoroutine(instrucoes.AND(posMemoria, ValorAcumulador));
                 break;
 
             case "HLT": // 11
