@@ -9,14 +9,24 @@ public class NeanderController : MonoBehaviour
     public static NeanderController INSTANCE;
     public Text Pc_Text, Acumulador_Text, BD_Text, RDM_Text, REM_Text, End_Text, RI_Text, MEM_Text, print_Text;
     public Toggle NegativeToggle, ZeroToggle;
-
+    public Slider _slider;
     public List<int> _comandos = new List<int>();
     public List<int> _parametros = new List<int>();
     public int[] memoria = new int[256];
 
     public int _Acumulador = 0, pc = 1;
 
-    public float TIMER_STEPS = 0.3f;
+    public float TIMER_STEPS = 0f;
+    public float UPDATE_STEPS
+    {
+        set
+        {
+            TIMER_STEPS = value;
+        }
+    }
+    public static bool usingStep = false;
+
+    Coroutine allRoutine;
 
     // Use this for initialization
     void Awake ()
@@ -27,12 +37,41 @@ public class NeanderController : MonoBehaviour
     void Start()
     {
         ReadTxtFile();
+        _slider.value = TIMER_STEPS;
     }
 
     public void tocarProxInstrucao()
     {
         Debug.Log("tocarProxInstrucao");
         UnidadeControle.LerInstrucao(_comandos[pc - 1], _parametros[pc - 1], _Acumulador);
+    }
+
+    public void stopAll()
+    {
+        if (allRoutine == null)
+            return;
+
+        StopCoroutine(allRoutine);
+    }
+
+    public void tocarTudo()
+    {
+        allRoutine = StartCoroutine(playAll());
+    }
+
+    IEnumerator playAll()
+    {
+        while(_comandos[pc-1] != 11 && pc < _comandos.Count)
+        {
+            UnidadeControle.LerInstrucao(_comandos[pc - 1], _parametros[pc - 1], _Acumulador);
+            yield return new WaitForEndOfFrame();
+
+            while (usingStep)
+                yield return new WaitForEndOfFrame();
+        }
+
+        if(_comandos[pc - 1] == 11)
+            UnidadeControle.LerInstrucao(_comandos[pc - 1], _parametros[pc - 1], _Acumulador);
     }
 
     void ReadTxtFile()
@@ -58,7 +97,7 @@ public class NeanderController : MonoBehaviour
                 }
                 string[] lineSplit = currentLine.Split(' ');
                 int command = int.Parse(lineSplit[0]);
-                int parameter = int.Parse(lineSplit[1]);
+                int parameter = (lineSplit.Length == 1) ? 0 : int.Parse(lineSplit[1]);
                 //Debug.Log("comando - " + command + " / parametro memoria " + parameter.ToString());
 
                 _comandos.Add(command);
@@ -147,6 +186,10 @@ public class NeanderController : MonoBehaviour
         Pc_Text.text = pc.ToString();
     }
 
+    /// <summary>
+    /// usado no jump
+    /// </summary>
+    /// <param name="newValue"></param>
     public void IncrementaPC(int newValue)
     {
         print("PC recebe a posicao " + newValue);

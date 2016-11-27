@@ -14,6 +14,8 @@ public class Instrucoes : MonoBehaviour
 
 	// Funcao de para instrucao: ADD
 	public IEnumerator ADD(int end, int valorAcumulador) {
+        NeanderController.usingStep = true;
+
         int valorMemoria;
 
         NeanderController.INSTANCE.verificaEndereco(end);
@@ -35,13 +37,13 @@ public class Instrucoes : MonoBehaviour
 
         yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
         NeanderController.INSTANCE.atualizaAcc(resultado);
-
+        NeanderController.usingStep = false;
     }
 
 	public IEnumerator STA(int end) {
         //Busca
         //NeanderController.INSTANCE.print("RI carrega a instruçai STA");
-
+        NeanderController.usingStep = true;
         //Executa
         NeanderController.INSTANCE.verificaEndereco(end);
 
@@ -52,10 +54,12 @@ public class Instrucoes : MonoBehaviour
         yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
 
         NeanderController.INSTANCE.armazenaValorNaMemoria(end);
+        NeanderController.usingStep = false;
     }
 
 	public IEnumerator LDA(int end) {
-		int valor;
+        NeanderController.usingStep = true;
+        int valor;
         NeanderController.INSTANCE.print("end pega a posicao da memoria");
         NeanderController.INSTANCE.verificaEndereco(end);
         yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
@@ -68,82 +72,61 @@ public class Instrucoes : MonoBehaviour
         yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
 
         NeanderController.INSTANCE.atualizaAcc(valor);
-	}
+        NeanderController.usingStep = false;
+    }
 
     public void JUMP(int end)
     {
         NeanderController.INSTANCE.IncrementaPC(end);
     }
 
-    public string JUMPN(int end, int valorAcumulador)
+    public void JUMPN(int end, int valorAcumulador)
     {
-        string conteudoMemoria;
-        
-        if (valorAcumulador < 0)
+        if(NeanderController.INSTANCE.NegativeToggle.isOn)
         {
-            try
-            {
-                conteudoMemoria = memoria[end];
-            } catch(Exception error)
-            {
-                throw new Exception("Não foi possível pegar o conteudo do endereço de memória", error);
-            }
-
-            return conteudoMemoria;
-        } else
-        {
-            return null;
+            NeanderController.INSTANCE.IncrementaPC(end);
+            return;
         }
-        
+        NeanderController.INSTANCE.IncrementaPC();
     }
 
-    public string JUMPZ(int end, int valorAcumulador)
+    public void JUMPZ(int end, int valorAcumulador)
     {
-        string conteudoMemoria;
-
-        if (valorAcumulador == 0)
+        if (NeanderController.INSTANCE.ZeroToggle.isOn)
         {
-            try
-            {
-                conteudoMemoria = memoria[end];
-            }
-            catch (Exception error)
-            {
-                throw new Exception("Não foi possível pegar o conteudo do endereço de memória", error);
-            }
-
-            return conteudoMemoria;
-        } else
-        {
-            return null;
+            NeanderController.INSTANCE.IncrementaPC(end);
+            return;
         }
+        NeanderController.INSTANCE.IncrementaPC();
+
     }
 
-    public string JUMPNZ(int end, int valorAcumulador)
-    {
-        string conteudoMemoria;
+    //public string JUMPNZ(int end, int valorAcumulador)
+    //{
+    //    string conteudoMemoria;
 
-        if (valorAcumulador != 0)
-        {
-            try
-            {
-                conteudoMemoria = memoria[end];
-            }
-            catch (Exception error)
-            {
-                throw new Exception("Não foi possível pegar o conteudo do endereço de memória", error);
-            }
+    //    if (valorAcumulador != 0)
+    //    {
+    //        try
+    //        {
+    //            conteudoMemoria = memoria[end];
+    //        }
+    //        catch (Exception error)
+    //        {
+    //            throw new Exception("Não foi possível pegar o conteudo do endereço de memória", error);
+    //        }
 
-            return conteudoMemoria;
-        }
-        else
-        {
-            return null;
-        }
-    }
+    //        return conteudoMemoria;
+    //    }
+    //    else
+    //    {
+    //        return null;
+    //    }
+    //}
 
     public IEnumerator NOT(int valorAcumulador)
     {
+        NeanderController.usingStep = true;
         NeanderController.INSTANCE.IncrementaPC();
         yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
 
@@ -153,10 +136,12 @@ public class Instrucoes : MonoBehaviour
 
         yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
         NeanderController.INSTANCE.atualizaAcc(notAcumulador);
+        NeanderController.usingStep = false;
     }
 
     public IEnumerator OR(int end, int valorAcumulador)
     {
+        NeanderController.usingStep = true;
         NeanderController.INSTANCE.IncrementaPC();
         yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
 
@@ -173,10 +158,12 @@ public class Instrucoes : MonoBehaviour
         yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
 
         NeanderController.INSTANCE.atualizaAcc(orAcumulador);
+        NeanderController.usingStep = false;
     }
 
     public IEnumerator AND(int end, int valorAcumulador)
     {
+        NeanderController.usingStep = true;
         NeanderController.INSTANCE.IncrementaPC();
         yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
 
@@ -191,5 +178,6 @@ public class Instrucoes : MonoBehaviour
         yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
 
         NeanderController.INSTANCE.atualizaAcc(orAcumulador);
+        NeanderController.usingStep = false;
     }
 }

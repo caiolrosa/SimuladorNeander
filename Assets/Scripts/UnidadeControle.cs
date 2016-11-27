@@ -31,15 +31,13 @@ public class UnidadeControle : MonoBehaviour
                 instrucoes.JUMP(posMemoria);
                 break;
 
-            //case "JUMPN": // 5
-            //    string valorMemoriaN = instrucoes.JUMPN(posMemoria, ValorAcumulador);
-            //    LerInstrucao(comando, valorMemoriaN);
-            //    break;
+            case "JUMPN": // 5
+                instrucoes.JUMPN(posMemoria, ValorAcumulador);
+                break;
 
-            //case "JUMPZ": // 6
-            //    string valorMemoriaZ = instrucoes.JUMPZ(posMemoria, ValorAcumulador);
-            //    LerInstrucao(comando, posMemoria);
-            //    break;
+            case "JUMPZ": // 6
+                instrucoes.JUMPZ(posMemoria, ValorAcumulador);
+                break;
 
             //case "JUMPNZ": // 7
             //    string valorMemoriaNZ = instrucoes.JUMPNZ(int.Parse(instrucaoLida[1]), ValorAcumulador);
