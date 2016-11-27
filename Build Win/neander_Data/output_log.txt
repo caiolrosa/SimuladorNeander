@@ -1,0 +1,86 @@
+Initialize engine version: 5.4.3f1 (01f4c123905a)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GT 630M (ID=0xde9)
+    Vendor:   NVIDIA
+    VRAM:     1999 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Felipe\Desktop\senac neander\trunk\Build Win\neander_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Felipe\Desktop\senac neander\trunk\Build Win\neander_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Felipe\Desktop\senac neander\trunk\Build Win\neander_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Felipe\Desktop\senac neander\trunk\Build Win\neander_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Felipe\Desktop\senac neander\trunk\Build Win\neander_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Felipe\Desktop\senac neander\trunk\Build Win\neander_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Felipe\Desktop\senac neander\trunk\Build Win\neander_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Felipe\Desktop\senac neander\trunk\Build Win\neander_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.112 seconds
+Platform assembly: C:\Users\Felipe\Desktop\senac neander\trunk\Build Win\neander_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Felipe\Desktop\senac neander\trunk\Build Win\neander_Data\Managed\System.dll (this message is harmless)
+desktop: 1366x768 60Hz; virtual: 3046x1451 at 0,-683
+<RI> Initializing input.
+XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.854525 ms
+instrução = LDA
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+end pega a posicao da memoria
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+incrementa PC: antigo valor 1 -> novo valor 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+acumulador recebe o valor que estava na posicao da memoria 129
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+novo valor no acumulador: 8
+ Flags N = False | Z = False
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+instrução = JUMPZ
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+incrementa PC: antigo valor 2 -> novo valor 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+instrução = NOT
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+incrementa PC: antigo valor 3 -> novo valor 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Acumulador recebe valor NOT(8)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+novo valor no acumulador: -9
+ Flags N = True | Z = False
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+instrução = ADD
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+end pega a posicao da memoria
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+incrementa PC: antigo valor 4 -> novo valor 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 16b4 -> priority: 1 
+  Thread -> id: 678 -> priority: 1 
