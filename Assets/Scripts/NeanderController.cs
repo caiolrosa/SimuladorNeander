@@ -38,6 +38,8 @@ public class NeanderController : MonoBehaviour
     {
         ReadTxtFile();
         _slider.value = TIMER_STEPS;
+        MEM_Text.text = "";
+        RI_Text.text = "";
     }
 
     public void tocarProxInstrucao()
@@ -165,14 +167,14 @@ public class NeanderController : MonoBehaviour
                 break;
         }
 
-        RI_Text.text = "Registrador de instrução - " + n.ToString() + "\n Mnemônico - " + instrucao;
+        RI_Text.text += pc.ToString() + " - " + " Registrador de instrução - " + n.ToString() + "\n Mnemônico - " + instrucao + "\n";
 
         return instrucao;
     }
 
     public void verificaEndereco(int end)
     {
-        MEM_Text.text = "Endereço da memoria - " + end;
+        MEM_Text.text += pc.ToString() + " - " + " End - " + end + "\nValor: " + memoria[end].ToString() + "\n";
         REM_Text.text = End_Text.text = end.ToString();
         RDM_Text.text = memoria[end].ToString();
     }
