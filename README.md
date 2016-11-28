@@ -15,3 +15,6 @@
 10 - AND
 11 - HLT
 ```
+
+Para passar as instruções
+- Abrir o arquivo Comandos.txt - Atalho ou neander_Data\StreamingAssets\comandos.txt
