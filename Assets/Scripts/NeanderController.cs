@@ -167,7 +167,7 @@ public class NeanderController : MonoBehaviour
                 break;
         }
 
-        RI_Text.text += pc.ToString() + " - " + " Registrador de instrução - " + n.ToString() + "\n Mnemônico - " + instrucao + "\n";
+        RI_Text.text += pc.ToString() + " - " + "(" + n.ToString() + ") " + instrucao + "\n";
 
         return instrucao;
     }
@@ -217,6 +217,7 @@ public class NeanderController : MonoBehaviour
         print("Armazena na memoria o valor do acumulador - " + NeanderController.INSTANCE._Acumulador + " - MEM(end) = " + end);
         memoria[end] = _Acumulador;
         RDM_Text.text = memoria[end].ToString();
+        MEM_Text.text += pc.ToString() + " - Armazena - " + " End - " + end + "\nValor: " + memoria[end].ToString() + "\n";
     }
 
     public void print(string message, bool clear = false)
