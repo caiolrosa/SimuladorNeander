@@ -38,14 +38,21 @@ public class NeanderController : MonoBehaviour
     {
         ReadTxtFile();
         _slider.value = TIMER_STEPS;
-        MEM_Text.text = "";
-        RI_Text.text = "";
+
+        pc = 1;
+        _Acumulador = 0;
+        Pc_Text.text = Acumulador_Text.text = RDM_Text.text = REM_Text.text = End_Text.text = MEM_Text.text = RI_Text.text = "";
     }
 
     public void tocarProxInstrucao()
     {
         Debug.Log("tocarProxInstrucao");
         UnidadeControle.LerInstrucao(_comandos[pc - 1], _parametros[pc - 1], _Acumulador);
+    }
+
+    public void resetAll()
+    {
+        Start();
     }
 
     public void stopAll()
@@ -78,6 +85,9 @@ public class NeanderController : MonoBehaviour
 
     void ReadTxtFile()
     {
+        _comandos = new List<int>();
+        _parametros = new List<int>();
+
         string myTxt = File.ReadAllText(Application.streamingAssetsPath + "/comandos.txt");
 
         string[] stringSeparators = new string[] { "\r\n" };

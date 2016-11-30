@@ -2,27 +2,26 @@ Initialize engine version: 5.4.3f1 (01f4c123905a)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
-    Renderer: NVIDIA GeForce GT 630M (ID=0xde9)
-    Vendor:   NVIDIA
-    VRAM:     1999 MB
+    Renderer: AMD Radeon HD 5800 Series (ID=0x6898)
+    Vendor:   ATI
+    VRAM:     2034 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\Felipe\Desktop\senac neander\trunk\Build Win\neander_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\Felipe\Desktop\senac neander\trunk\Build Win\neander_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\Felipe\Desktop\senac neander\trunk\Build Win\neander_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\Felipe\Desktop\senac neander\trunk\Build Win\neander_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\Felipe\Desktop\senac neander\trunk\Build Win\neander_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\Felipe\Desktop\senac neander\trunk\Build Win\neander_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\Felipe\Desktop\senac neander\trunk\Build Win\neander_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\Felipe\Desktop\senac neander\trunk\Build Win\neander_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.112 seconds
-Platform assembly: C:\Users\Felipe\Desktop\senac neander\trunk\Build Win\neander_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\Felipe\Desktop\senac neander\trunk\Build Win\neander_Data\Managed\System.dll (this message is harmless)
-desktop: 1366x768 60Hz; virtual: 3046x1451 at 0,-683
+Platform assembly: C:\Users\felipe.moreti\Desktop\senac\Neander\trunk\Build Win\neander_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\felipe.moreti\Desktop\senac\Neander\trunk\Build Win\neander_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\felipe.moreti\Desktop\senac\Neander\trunk\Build Win\neander_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\felipe.moreti\Desktop\senac\Neander\trunk\Build Win\neander_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\felipe.moreti\Desktop\senac\Neander\trunk\Build Win\neander_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\felipe.moreti\Desktop\senac\Neander\trunk\Build Win\neander_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\felipe.moreti\Desktop\senac\Neander\trunk\Build Win\neander_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\felipe.moreti\Desktop\senac\Neander\trunk\Build Win\neander_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.101 seconds
+Platform assembly: C:\Users\felipe.moreti\Desktop\senac\Neander\trunk\Build Win\neander_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\felipe.moreti\Desktop\senac\Neander\trunk\Build Win\neander_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 3840x1080 at -1920,0
 <RI> Initializing input.
-XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 0.854525 ms
+UnloadTime: 0.748253 ms
 instrução = LDA
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
@@ -81,6 +80,230 @@ incrementa PC: antigo valor 4 -> novo valor 5
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-Setting up 2 worker threads for Enlighten.
-  Thread -> id: 16b4 -> priority: 1 
-  Thread -> id: 678 -> priority: 1 
+Acumulador = -9 + 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+novo valor no acumulador: -8
+ Flags N = True | Z = False
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+instrução = NOT
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+incrementa PC: antigo valor 5 -> novo valor 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Acumulador recebe valor NOT(-8)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+novo valor no acumulador: 7
+ Flags N = False | Z = False
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+instrução = STA
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+incrementa PC: antigo valor 6 -> novo valor 7
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Armazena na memoria o valor do acumulador - 7 - MEM(end) = 129
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+instrução = LDA
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+end pega a posicao da memoria
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+incrementa PC: antigo valor 7 -> novo valor 8
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+acumulador recebe o valor que estava na posicao da memoria 131
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+novo valor no acumulador: 0
+ Flags N = False | Z = True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+instrução = ADD
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+end pega a posicao da memoria
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+incrementa PC: antigo valor 8 -> novo valor 9
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Acumulador = 0 + 9
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+novo valor no acumulador: 9
+ Flags N = False | Z = False
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+instrução = STA
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+incrementa PC: antigo valor 9 -> novo valor 10
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Armazena na memoria o valor do acumulador - 9 - MEM(end) = 131
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+instrução = JUMP
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+PC recebe a posicao 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+instrução = LDA
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+end pega a posicao da memoria
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+incrementa PC: antigo valor 1 -> novo valor 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+acumulador recebe o valor que estava na posicao da memoria 129
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+novo valor no acumulador: 7
+ Flags N = False | Z = False
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+instrução = JUMPZ
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+incrementa PC: antigo valor 2 -> novo valor 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+instrução = NOT
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+incrementa PC: antigo valor 3 -> novo valor 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Acumulador recebe valor NOT(7)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+novo valor no acumulador: -8
+ Flags N = True | Z = False
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+instrução = ADD
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+end pega a posicao da memoria
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+incrementa PC: antigo valor 4 -> novo valor 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Acumulador = -8 + 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+novo valor no acumulador: -7
+ Flags N = True | Z = False
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+instrução = NOT
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+incrementa PC: antigo valor 5 -> novo valor 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Acumulador recebe valor NOT(-7)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+novo valor no acumulador: 6
+ Flags N = False | Z = False
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+instrução = STA
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+incrementa PC: antigo valor 6 -> novo valor 7
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Armazena na memoria o valor do acumulador - 6 - MEM(end) = 129
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+instrução = LDA
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+end pega a posicao da memoria
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+incrementa PC: antigo valor 7 -> novo valor 8
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+acumulador recebe o valor que estava na posicao da memoria 131
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+novo valor no acumulador: 9
+ Flags N = False | Z = False
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+instrução = ADD
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+end pega a posicao da memoria
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 920 -> priority: 1 
