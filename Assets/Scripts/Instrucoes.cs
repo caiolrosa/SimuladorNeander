@@ -45,15 +45,15 @@ public class Instrucoes : MonoBehaviour
         //NeanderController.INSTANCE.print("RI carrega a instruçai STA");
         NeanderController.usingStep = true;
         //Executa
-        NeanderController.INSTANCE.verificaEndereco(end);
-
-        yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
-
-        NeanderController.INSTANCE.IncrementaPC();
+        //NeanderController.INSTANCE.verificaEndereco(end);
 
         yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
 
         NeanderController.INSTANCE.armazenaValorNaMemoria(end);
+
+        yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
+
+        NeanderController.INSTANCE.IncrementaPC();
         NeanderController.usingStep = false;
     }
 
@@ -68,6 +68,7 @@ public class Instrucoes : MonoBehaviour
         yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
 
         valor = NeanderController.INSTANCE.memoria[end];
+        Debug.Log("valor " + valor);
         NeanderController.INSTANCE.print("acumulador recebe o valor que estava na posicao da memoria " + end);
         yield return new WaitForSeconds(NeanderController.INSTANCE.TIMER_STEPS);
 
